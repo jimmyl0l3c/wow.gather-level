@@ -1,4 +1,5 @@
 Herbs = {
+    -- Vanilla
     ["Peacebloom"] = {
         id = nil,
         level = {
@@ -233,4 +234,15 @@ Herbs = {
             gray = 300
         }
     },
+    ["Plaguebloom"] = {
+        id = nil,
+        level = {
+            min = 285,
+            yellow = nil,
+            green = nil,
+            gray = 300
+        }
+    },
+    -- TBC
+    -- WotLK
 }
