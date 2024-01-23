@@ -1,4 +1,4 @@
-GatheringProfessions = {["Herbalism"] = true, ["Mining"] = true}
+IsGatheringProfession = {["Herbalism"] = true, ["Mining"] = true}
 
 Colors = {
     red = { r = 1, g = 0, b = 0 },
@@ -7,3 +7,4 @@ Colors = {
     green = { r = 0, g = 1, b = 0 },
     gray = { r = 0.5, g = 0.5, b = 0.5 }
 }
+

@@ -1,37 +1,29 @@
 GatherLevel = LibStub("AceAddon-3.0"):NewAddon("GatherLevel", "AceConsole-3.0", "AceEvent-3.0")
 
+GatherLevel.professions = {}
+
 function GatherLevel:OnInitialize()
     self:Print("initialized")
 end
 
 function GatherLevel:OnEnable()
+    FetchProfessionSkills()
     self:Print("enabled")
-    -- self:Print(GetNumPrimaryProfessions())
-end
-
-function GetProffesionSkills()
-    local professions = {}
-
-    local i = 0
-    while i < GetNumSkillLines() do
-        local skillName, _, _, skillRank, skillTemp, skillModifier, skillMax = GetSkillLineInfo(i)
-        if skillName ~= nil and GatheringProfessions[skillName] then
-            professions[skillName] = {
-                rank = skillRank,
-                temp = skillTemp,
-                modifier = skillModifier,
-                max = skillMax
-            }
-        end
-        i = i + 1
-    end
-
-    return professions
 end
 
 function GatherLevel:OnDisable()
     self:Print("disabled")
 end
+
+function GatherLevel:CHAT_MSG_SKILL(_, text, ...)
+    for profName in pairs(GatherLevel.professions) do
+        local newRank = string.match(text, "Your skill in " .. profName .. " has increased to (%d+).")
+        SetProfessionRank(profName, tonumber(newRank))
+    end
+end
+
+-- TODO: also update rank max after training
+GatherLevel:RegisterEvent("CHAT_MSG_SKILL")
 
 function GetNodeInfo(itemName)
     local item = Herbs[itemName]
@@ -40,7 +32,7 @@ function GetNodeInfo(itemName)
 
     local color = Colors.yellow
 
-    local herbalism = GetProffesionSkills()["Herbalism"]
+    local herbalism = GatherLevel.professions["Herbalism"]
     if herbalism ~= nil then
         if item.level.min > herbalism.rank then
             color = Colors.red

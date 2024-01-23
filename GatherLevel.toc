@@ -8,5 +8,7 @@ embeds.xml
 Data/Herbs.lua
 Data/Constants.lua
 
+ProfessionInfo.lua
+
 main.lua
 
