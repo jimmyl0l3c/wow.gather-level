@@ -7,6 +7,7 @@ function FetchProfessionSkills()
 
         if skillName ~= nil and IsGatheringProfession[skillName] then
             GatherLevel.professions[skillName] = {
+                name = skillName,
                 rank = skillRank,
                 temp = skillTemp,
                 modifier = skillModifier,

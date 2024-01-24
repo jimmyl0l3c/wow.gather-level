@@ -6,9 +6,11 @@
 embeds.xml
 
 Data/Herbs.lua
+Data/MiningNodes.lua
 Data/Constants.lua
 
 ProfessionInfo.lua
+NodeTooltip.lua
 
 main.lua
 

@@ -22,29 +22,14 @@ function GatherLevel:CHAT_MSG_SKILL(_, text, ...)
     end
 end
 
--- TODO: also update rank max after training
-GatherLevel:RegisterEvent("CHAT_MSG_SKILL")
-
-function GetNodeInfo(itemName)
-    local item = Herbs[itemName]
-
-    if item == nil then return nil end
-
-    local color = Colors.yellow
-
-    local herbalism = GatherLevel.professions["Herbalism"]
-    if herbalism ~= nil then
-        if item.level.min > herbalism.rank then
-            color = Colors.red
-        elseif item.level.gray > herbalism.rank then
-            color = Colors.green
-        elseif item.level.gray <= herbalism.rank then
-            color = Colors.gray
-        end
-    end
-
-    return "Herb " .. item.level.min .. "\nGray " .. item.level.gray, color
+function GatherLevel:SKILL_LINES_CHANGED(_)
+    -- Major change to skill list happened, reload data
+    GatherLevel.professions = {}
+    FetchProfessionSkills()
 end
+
+GatherLevel:RegisterEvent("CHAT_MSG_SKILL")
+GatherLevel:RegisterEvent("SKILL_LINES_CHANGED")
 
 function OnShowTooltip(tooltip)
     local lines = tooltip:GetTooltipData()["lines"]
@@ -52,13 +37,7 @@ function OnShowTooltip(tooltip)
     if lines[1] == nil then return end
     if lines[1]["leftText"] == nil then return end
 
-    local tooltipText = lines[1]["leftText"]
-
-    local additionalText, color = GetNodeInfo(tooltipText)
-
-    if additionalText == nil or color == nil then return end
-
-    tooltip:AddLine("\n" .. additionalText, color.r, color.g, color.b)
+    ExpandTooltip(tooltip, lines[1]["leftText"])
 end
 
 GameTooltip:HookScript("OnShow", OnShowTooltip)
