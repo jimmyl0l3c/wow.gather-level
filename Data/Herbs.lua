@@ -244,5 +244,95 @@ Herbs = {
         }
     },
     -- TBC
+    ["Felweed"] = {
+        id = nil,
+        level = {
+            min = 300,
+            yellow = nil,
+            green = nil,
+            gray = 375
+        }
+    },
+    ["Dreaming Glory"] = {
+        id = nil,
+        level = {
+            min = 315,
+            yellow = nil,
+            green = nil,
+            gray = 375
+        }
+    },
+    ["Ragveil"] = {
+        id = nil,
+        level = {
+            min = 325,
+            yellow = nil,
+            green = nil,
+            gray = 375
+        }
+    },
+    ["Flame Cap"] = {
+        id = nil,
+        level = {
+            min = 335,
+            yellow = nil,
+            green = nil,
+            gray = 375
+        }
+    },
+    ["Tercone"] = {
+        id = nil,
+        level = {
+            min = 325,
+            yellow = nil,
+            green = nil,
+            gray = 375
+        }
+    },
+    ["Ancient Lichen"] = {
+        id = nil,
+        level = {
+            min = 340,
+            yellow = nil,
+            green = nil,
+            gray = 375
+        }
+    },
+    ["Netherbloom"] = {
+        id = nil,
+        level = {
+            min = 350,
+            yellow = nil,
+            green = nil,
+            gray = 375
+        }
+    },
+    ["Netherdust Bush"] = {
+        id = nil,
+        level = {
+            min = 350,
+            yellow = nil,
+            green = nil,
+            gray = 375
+        }
+    },
+    ["Nightmare Vine"] = {
+        id = nil,
+        level = {
+            min = 365,
+            yellow = nil,
+            green = nil,
+            gray = 375
+        }
+    },
+    ["Mana Thistle"] = {
+        id = nil,
+        level = {
+            min = 375,
+            yellow = nil,
+            green = nil,
+            gray = 375
+        }
+    },
     -- WotLK
 }
