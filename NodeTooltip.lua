@@ -1,13 +1,19 @@
-function FormatNodeInfo(skillInfo, nodeInfo)
-    local color = Colors.yellow
+function GetNodeColorName(skillInfo, nodeInfo)
+    local color = ColorNames.yellow
 
     if nodeInfo.level.min > skillInfo.rank then
-        color = Colors.red
+        color = ColorNames.red
     elseif nodeInfo.level.gray > skillInfo.rank then
-        color = Colors.green
+        color = ColorNames.green
     elseif nodeInfo.level.gray <= skillInfo.rank then
-        color = Colors.gray
+        color = ColorNames.gray
     end
+
+    return color
+end
+
+function FormatNodeInfo(skillInfo, nodeInfo)
+    local color = Colors[GetNodeColorName(skillInfo, nodeInfo)]
 
     return skillInfo.name .. " " .. nodeInfo.level.min .. "\nGray " .. nodeInfo.level.gray, color
 end
@@ -17,7 +23,7 @@ function GetNodeInfo(nodeName)
     local herb = Herbs[nodeName]
 
     if herb ~= nil then
-        local herbInfo = GatherLevel.professions["Herbalism"]
+        local herbInfo = GatherLevel.professions[Professions.Herbalism]
         if herbInfo == nil then return nil end
 
         return FormatNodeInfo(herbInfo, herb)
@@ -27,7 +33,7 @@ function GetNodeInfo(nodeName)
     local miningNode = MiningNodes[nodeName]
 
     if miningNode ~= nil then
-        local miningInfo = GatherLevel.professions["Mining"]
+        local miningInfo = GatherLevel.professions[Professions.Mining]
         if miningInfo == nil then return nil end
 
         return FormatNodeInfo(miningInfo, miningNode)

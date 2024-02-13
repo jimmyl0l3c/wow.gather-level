@@ -2,6 +2,7 @@
 ## Title: GatherLevel
 ## Author: JimmyJimmeh
 ## Version: 1.0
+## SavedVariables: GatherLevelNodeDB
 
 embeds.xml
 
@@ -11,6 +12,8 @@ Data/Constants.lua
 
 ProfessionInfo.lua
 NodeTooltip.lua
+
+DataCollector.lua
 
 main.lua
 
